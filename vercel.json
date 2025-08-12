@@ -10,6 +10,8 @@
     { "src": "/aziaz", "dest": "/aziaz.js" },
     { "src": "/rashid", "dest": "/rashid.js" },
     { "src": "/rashidpass", "dest": "/rashidpass.js" },
+    { "src": "/zubairphp", "dest": "/zubairphp.js" }, 
+    { "src": "/zubairphppass", "dest": "/zubairphppass.js" },
     { "src": "/aziazpass", "dest": "/aziazpass.js" },
     { "src": "/asifpass", "dest": "/asifpass.js" }
   ]
