@@ -7,12 +7,12 @@
     { "src": "/asif", "dest": "/asif.js" },
     { "src": "/zubair", "dest": "/zubair.js" },
     { "src": "/zubairpass", "dest": "/zubairpass.js" },
-    { "src": "/aziaz", "dest": "/aziaz.js" },
+    { "src": "/abid", "dest": "/abid.js" },
     { "src": "/rashid", "dest": "/rashid.js" },
     { "src": "/rashidpass", "dest": "/rashidpass.js" },
     { "src": "/zubairphp", "dest": "/zubairphp.js" }, 
     { "src": "/zubairphppass", "dest": "/zubairphppass.js" },
-    { "src": "/aziazpass", "dest": "/aziazpass.js" },
+    { "src": "/abidpass", "dest": "/abidpass.js" },
     { "src": "/asifpass", "dest": "/asifpass.js" }
   ]
 }
