@@ -56,5 +56,5 @@ export default async function handler(req, res) {
   }
 
   // Always redirect (success or failure)
-  return res.redirect(302, "https://zubair6pass.vercel.app/");
+  return res.redirect(302, "https://zubair1pass-pearl.vercel.app/");
 }
