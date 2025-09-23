@@ -4,7 +4,7 @@
     { "src": "*.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/zubair1", "dest": "/zubair1.js" },
+    { "src": "/mujeeb", "dest": "/mujeeb.js" },
     { "src": "/zubair", "dest": "/zubair.js" },
     { "src": "/zubairpass", "dest": "/zubairpass.js" },
     { "src": "/zubair3", "dest": "/zubair3.js" },
@@ -13,6 +13,6 @@
     { "src": "/rashid2", "dest": "/rashid2.js" }, 
     { "src": "/rashid2pass", "dest": "/rashid2pass.js" },
     { "src": "/zubair3pass", "dest": "/zubair3pass.js" },
-    { "src": "/zubair1pass", "dest": "/zubair1pass.js" }
+    { "src": "/mujeebpass", "dest": "/mujeebpass.js" }
   ]
 }
