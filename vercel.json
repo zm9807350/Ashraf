@@ -7,12 +7,12 @@
     { "src": "/mujeeb", "dest": "/mujeeb.js" },
     { "src": "/zubair", "dest": "/zubair.js" },
     { "src": "/zubairpass", "dest": "/zubairpass.js" },
-    { "src": "/zubair3", "dest": "/zubair3.js" },
+    { "src": "/waris", "dest": "/waris.js" },
     { "src": "/sheraz", "dest": "/sheraz.js" },
     { "src": "/sherazpass", "dest": "/sherazpass.js" },
     { "src": "/rashid2", "dest": "/rashid2.js" }, 
     { "src": "/rashid2pass", "dest": "/rashid2pass.js" },
-    { "src": "/zubair3pass", "dest": "/zubair3pass.js" },
+    { "src": "/warispass", "dest": "/warispass.js" },
     { "src": "/mujeebpass", "dest": "/mujeebpass.js" }
   ]
 }
